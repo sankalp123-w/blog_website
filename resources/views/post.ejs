@@ -1,0 +1,94 @@
+
+<div class="w3-content" style="max-width:1400px">
+
+  
+  <!-- Grid -->
+  <div class="w3-row">
+  
+  <!-- Blog entries -->
+  <div class="w3-col l8 s12">
+    <!-- Blog entry -->
+    <div class="w3-card-4 w3-margin w3-white">
+      <img src="<%=data.metadata.image.url%>" alt="Nature" style="width:100%">
+      <div class="w3-container">
+        <h3><b><%=data.metadata.heading%></b></h3>
+        <h5><%=data.title%>, <span class="w3-opacity"><%=data.published_at%></span></h5>
+      </div>
+  
+      <div class="w3-container">
+        <%-data.content%>
+        
+      </div>
+    </div>
+    <hr>
+  
+   
+  <!-- END BLOG ENTRIES -->
+  </div>
+  
+  <!-- Introduction menu -->
+  <div class="w3-col l4">
+    <!-- About Card -->
+    <div class="w3-card w3-margin w3-margin-top">
+      <div class="w3-container w3-white">
+        <div class="card">
+          <div class="text-center"> <img src="https://i.imgur.com/Dh7U4bp.png" width="200"> <span class="d-block mt-3">Subscribe to our newsletter in order not to miss new arrivals <br> promotions </span>
+              <div class="mx-5">
+                  <div class="input-group mb-3 mt-4"> 
+                   <form action="/subs" method="post">
+                    <%if(messages.err){%>
+  <span class="text-red-500 text-sm "><%=messages.err%></span><%}%>
+                  <input type="text" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2" name="email"> <button class="btn btn-success border-rad" type="submit" id="button-addon2">Subscribe</button> 
+                    </form>
+                  
+                </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div><hr>
+    
+    <!-- Posts -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding">
+        <h4>Popular Posts</h4>
+      </div>
+      <ul class="w3-ul w3-hoverable w3-white">
+        <%blogs.forEach(function(blog){%>
+        <li class="w3-padding-16">
+          <img src="<%=blog.thumbnail%>" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large"><a href="<%=blog.id%>"><%=blog.metadata.heading%></a></span><br>
+          <span><%=blog.title%></span>
+        </li>
+        <%})%>
+      </ul>
+    </div>
+    <hr> 
+   
+    <!-- Labels / tags -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding">
+        <h4>Tags</h4>
+      </div>
+      <div class="w3-container w3-white">
+      <p><span class="w3-tag w3-black w3-margin-bottom">Sketching</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shade</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Blog</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+      </p>
+      </div>
+    </div>
+    
+  <!-- END Introduction Menu -->
+  </div>
+  
+  <!-- END GRID -->
+  </div><br>
+  
+  <!-- END w3-content -->
+  </div>
+  
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/hi_IN/sdk.js#xfbml=1&version=v11.0" nonce="wiDRNxXE"></script>
+<div class="fb-comments" data-href="http://localhost:3000/post/:id" data-width="" data-numposts="5"></div>
