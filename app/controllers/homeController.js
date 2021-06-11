@@ -1,8 +1,8 @@
 const Cosmic = require('cosmicjs')
 const api = Cosmic()
 const bucket = api.bucket({
-  slug:'sketch-blog-testing',
-  read_key: 'xaoV8FMjx4gliJCscdvbsEC8Lv8O1ZfkUzt7oE7lMADYCcD5Dc'
+  slug:process.env.COSMIC_SLUG,
+  read_key: process.env.COSMIC_READKEY
 })
 function homeController(){
 	return{

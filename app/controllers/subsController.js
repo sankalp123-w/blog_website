@@ -26,17 +26,17 @@ var transporter = nodemailer.createTransport({
    secure: true,  
    service: 'Gmail',
   auth: {
-    user: 'sankalpjha63@gmail.com',
-    pass: 'sankalpjha123'
+    user: process.env.EMAIL_ID,
+    pass: process.env.EMAIL_PASS
   },
  
 });
 
 var mailOptions = {
-  from: 'sankalpjha63@gmail.com',
+  from: process.env.EMAIL_ID,
   to: subemail,
   subject: 'test mail',
-  html:'<h1>Thanks for subscription <%=subemail%></h1>'
+  html:`<h1>Thanks for subscription</h1> ${subemial}`
 };
 
 transporter.sendMail(mailOptions, function(error, info){

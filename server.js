@@ -20,7 +20,7 @@ secret:process.env.SECRET_KEY,
 resave:false,
 saveUninitialized:true,
 store: MongoDbConnect.create({
-    mongoUrl:'mongodb://localhost:27017/myblog',
+    mongoUrl: process.env.MONGO_CONNECTION_URL||'mongodb://localhost:27017/myblog',
    
   }),
  cookie:{maxAge:1000*60*60*24}, 
