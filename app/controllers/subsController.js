@@ -36,7 +36,9 @@ var mailOptions = {
   from: process.env.EMAIL_ID,
   to: subemail,
   subject: 'test mail',
-  html:`<h1>Thanks for subscription</h1> ${subemial}`
+  html:`<h1>Thanks for subscription </h1>
+  <p> we hope you will enjoy and lear from our blog</P>
+  `
 };
 
 transporter.sendMail(mailOptions, function(error, info){
