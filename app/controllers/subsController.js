@@ -11,6 +11,16 @@ try{
   		req.flash('err','please fill email')
   		res.redirect('/')
   	}
+
+    Sub.exists({email:subemail},(err,result)=>{
+      if (result) {
+        req.flash('err','Already subscribed');
+      
+     return res.redirect('/')
+
+      }
+        
+      });
     var data = await new Sub({
     email:subemail
     })
@@ -20,20 +30,22 @@ if(!check){
 
 	res.redirect('/')
 }
+
+
 var transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
    port: 465,
    secure: true,  
    service: 'Gmail',
   auth: {
-    user: process.env.EMAIL_ID,
-    pass: process.env.EMAIL_PASS
+    user:process.env.EMAIL_USER,
+    pass:process.env.EMAIL_PASS
   },
  
 });
 
 var mailOptions = {
-  from: process.env.EMAIL_ID,
+  from:process.env.EMAIL_USER,
   to: subemail,
   subject: 'test mail',
   html:`<h1>Thanks for subscription </h1>
